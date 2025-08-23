@@ -50,4 +50,11 @@ public class DemoUtilsTest {
 
         assertIterableEquals(demoUtils.getAcademyInList(), list, "Lists should be Equals");
     }
+
+    @DisplayName("Throw and does not throw")
+    @Test
+    void throwAndDoesNotThrow() {
+        assertThrows(Exception.class, () -> { demoUtils.throwException(-1); }, "Should throw exception");
+        assertDoesNotThrow(() -> { demoUtils.throwException(1); }, "Should not throw");
+    }
 }
