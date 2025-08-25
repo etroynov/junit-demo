@@ -1,13 +1,13 @@
 package com.luv2code.junitdemo;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
+import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.Random.class)
 public class DemoUtilsTest {
     DemoUtils demoUtils;
     @BeforeEach
@@ -56,5 +56,11 @@ public class DemoUtilsTest {
     void throwAndDoesNotThrow() {
         assertThrows(Exception.class, () -> { demoUtils.throwException(-1); }, "Should throw exception");
         assertDoesNotThrow(() -> { demoUtils.throwException(1); }, "Should not throw");
+    }
+
+    @DisplayName("Timeout")
+    @Test
+    void testTimeout() {
+        assertTimeoutPreemptively(Duration.ofSeconds(3), () -> { demoUtils.checkTimeout(); }, "Method should execute in 3 sec");
     }
 }
