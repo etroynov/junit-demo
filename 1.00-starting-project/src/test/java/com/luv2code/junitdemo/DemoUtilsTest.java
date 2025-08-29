@@ -1,6 +1,10 @@
 package com.luv2code.junitdemo;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledForJreRange;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.JRE;
+import org.junit.jupiter.api.condition.OS;
 
 import java.time.Duration;
 import java.util.List;
@@ -24,6 +28,7 @@ public class DemoUtilsTest {
 
     @Test
     @DisplayName("Should return true")
+    @EnabledForJreRange(min=JRE.JAVA_17)
     void testNullAndNotNull() {
         assertNull(demoUtils.checkNull(null), "Object should be null");
         assertNotNull(demoUtils.checkNull("My name is"), "Object should not be null");
@@ -31,6 +36,7 @@ public class DemoUtilsTest {
 
     @DisplayName("True or false")
     @Test
+    @EnabledOnOs(OS.MAC)
     void trueOrFalse () {
         assertTrue(demoUtils.isGreater(2, 1), "This should return true");
         assertFalse(demoUtils.isGreater(1, 2), "This should return false");
