@@ -2,18 +2,20 @@ package com.luv2code.tdd;
 
 public class FizzBuzz {
     public static String compute(int num) {
-        if (num % 5 == 0 && num % 3 == 0) {
-            return "FizzBuzz";
-        }
+        StringBuilder result = new StringBuilder();
 
         if (num % 3 == 0) {
-            return "Fizz";
+            result.append("Fizz");
         }
 
         if (num % 5 == 0) {
-            return "Buzz";
+            result.append("Buzz");
         }
 
-        return Integer.toString(num);
+        if (result.isEmpty()) {
+            result.append(num);
+        }
+
+        return result.toString();
     }
 }
