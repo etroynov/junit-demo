@@ -23,4 +23,9 @@ public class FizzBuzzTest {
     void testForDivisibleByThreeAndFive() {
         assertEquals("FizzBuzz", FizzBuzz.compute(15), "should return FizzBuzz");
     }
+
+    @Test
+    void testForNotDivisibleByThreeAndFive() {
+        assertEquals("11", FizzBuzz.compute(11), "should return 11");
+    }
 }

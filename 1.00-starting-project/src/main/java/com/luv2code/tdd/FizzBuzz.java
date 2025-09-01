@@ -14,6 +14,6 @@ public class FizzBuzz {
             return "Buzz";
         }
 
-        return String.valueOf(num);
+        return Integer.toString(num);
     }
 }
