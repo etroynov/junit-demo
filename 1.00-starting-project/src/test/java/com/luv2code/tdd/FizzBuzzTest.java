@@ -28,4 +28,20 @@ public class FizzBuzzTest {
     void testForNotDivisibleByThreeAndFive() {
         assertEquals("11", FizzBuzz.compute(11), "should return 11");
     }
+
+    @Test
+    void testLoopOverArray() {
+        String[][] cases = {
+            {"1", "1"},
+            {"2", "2"},
+            {"3", "Fizz"},
+            {"4", "4"},
+            {"5", "Buzz"},
+            {"15", "FizzBuzz"}
+        };
+
+        for (String[] el: cases) {
+            assertEquals(el[1], FizzBuzz.compute(Integer.parseInt(el[0])));
+        }
+    }
 }
