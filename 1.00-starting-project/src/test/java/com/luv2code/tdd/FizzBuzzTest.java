@@ -1,6 +1,10 @@
 package com.luv2code.tdd;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,19 +33,17 @@ public class FizzBuzzTest {
         assertEquals("11", FizzBuzz.compute(11), "should return 11");
     }
 
-    @Test
-    void testLoopOverArray() {
-        String[][] cases = {
-            {"1", "1"},
-            {"2", "2"},
-            {"3", "Fizz"},
-            {"4", "4"},
-            {"5", "Buzz"},
-            {"15", "FizzBuzz"}
-        };
-
-        for (String[] el: cases) {
-            assertEquals(el[1], FizzBuzz.compute(Integer.parseInt(el[0])));
-        }
+    @DisplayName("Testing with CSV")
+    @ParameterizedTest
+    @CsvSource({
+        "1,1",
+        "2,2",
+        "3,Fizz",
+        "4,4",
+        "5,Buzz",
+        "15,FizzBuzz",
+    })
+    void testLoopOverArray(int value, String expected) {
+            assertEquals(expected, FizzBuzz.compute(value));
     }
 }
