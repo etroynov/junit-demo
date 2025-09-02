@@ -34,7 +34,7 @@ public class FizzBuzzTest {
     }
 
     @DisplayName("Testing with CSV")
-    @ParameterizedTest
+    @ParameterizedTest(name="value={0}, expected={1}")
     @CsvSource({
         "1,1",
         "2,2",
